@@ -2,13 +2,15 @@ package com.nio_learning;
 
 import org.junit.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.*;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -68,6 +70,7 @@ public class HelloNio {
         SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress("localhost", 8080));
         Selector selector = Selector.open();
         socketChannel.configureBlocking(false);
+
         ByteBuffer buffer = ByteBuffer.allocate(255);
         SelectionKey selectionKey = socketChannel.register(selector, SelectionKey.OP_READ, buffer);
         while(true){
@@ -124,7 +127,7 @@ public class HelloNio {
     @Test
     public void socketChannelTest() throws IOException {
         SocketChannel socketChannel = SocketChannel.open();
-        socketChannel.connect(new InetSocketAddress("localhost", 8080));
+        boolean connected = socketChannel.connect(new InetSocketAddress("localhost", 8080));
         readChannel(socketChannel);
     }
 
