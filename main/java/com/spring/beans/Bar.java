@@ -8,6 +8,14 @@ public class Bar {
 
     private String foo;
 
+    public Bar() {
+    }
+
+    public Bar(String foo) {
+
+        this.foo = foo;
+    }
+
     public String getFoo() {
         return foo;
     }

@@ -14,4 +14,6 @@ public class Demo {
         Foo foo = (Foo) context.getBean("foo");
         System.out.println(foo.getBar());
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.spring.configs;
 
 import com.spring.beans.Bar;
 import com.spring.beans.Foo;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,6 @@ public class AppConfig {
 
     @Bean
     public Foo foo(){
-
         return new Foo();
     }
 
