@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Try-With-Resources测试
+ * JDK7 Try-With-Resources特性
  * Created by Administrator on 2017/4/25 0025.
  */
 public class Main {
