@@ -43,10 +43,10 @@ public class ApplicationXmlContext {
                 definition.setClassName(node.valueOf("@class"));
                 definition.setId(node.valueOf("@id"));
                 definition.setName(node.valueOf("@name"));
-                List<Node> properties = node.selectNodes("//property");
+                List<Node> properties = node.selectNodes("property");
                 List<Property> propMaps = new ArrayList<>();
                 for(Node property:properties){
-                    propMaps.add(new Property(property.valueOf("@name"),property.valueOf("@value")));
+                    propMaps.add(new Property(property.valueOf("@name"),property.valueOf("@value"),property.valueOf("@ref")));
                 }
                 definition.setProperties(propMaps);
                 definitions.add(definition);
@@ -74,12 +74,19 @@ public class ApplicationXmlContext {
                     Field f = clazz.getDeclaredField(property.getName());
                     Class<?> parameterType = f.getType();
                     Method setter = clazz.getMethod("set" + property.getName().substring(0, 1).toUpperCase() + property.getName().substring(1),parameterType);
-                    setter.invoke(ins,property.getValue());
-                    beans.put(mark,ins);
+
+                    if(property.getValue()!=null&&property.getValue()!=""){
+                        setter.invoke(ins,property.getValue());
+                    }else if(property.getRef()!=null&&property.getRef()!=""){
+                        setter.invoke(ins,beans.get(property.getRef()));
+                    }
+
+
                 } catch (NoSuchFieldException | NoSuchMethodException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
             }
+            beans.put(mark,ins);
         }
     }
 

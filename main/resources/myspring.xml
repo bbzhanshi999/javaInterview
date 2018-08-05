@@ -5,4 +5,8 @@
         <property name="bar" value="foo"/>
     </bean>
 
+    <bean id="car" class="com.myspring.beans.BYD"></bean>
+    <bean id="driver" class="com.myspring.beans.Driver">
+        <property name="car" ref="car"/>
+    </bean>
 </beans>
