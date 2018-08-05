@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<bean id="manager" class="com.spring.aop.proxy.ManagerImpl"></bean>
+	<bean id="secretaryAdvice" class="com.spring.aop.SecretaryAdvice2"/>
+
+
+	<!--纯schema配置方式实现aop-->
+	<aop:config>
+		<aop:aspect id="afterReturningExample" ref="secretaryAdvice">
+			<aop:pointcut id="pointCut1" expression="execution(* *(..))" />
+			<aop:after
+					pointcut-ref="pointCut1"
+					method="record"/>
+			<aop:before
+					pointcut-ref="pointCut1"
+					method="reserve"/>
+		</aop:aspect>
+	</aop:config>
+</beans>
