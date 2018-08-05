@@ -1,0 +1,43 @@
+@startuml
+
+@startuml
+
+interface Car{
+    run()
+}
+
+class Container{
+    getComponent(String beanName)
+}
+
+
+Car<|-- Audi
+Car<|-- BMW
+Car<|-- BYD
+Container o-- Car:xml <bean name="car" class="com.xxx.Audi"/>
+Driver - Container:container.getComponent("car")
+
+class Audi{
+    String model
+    beautifulLight()
+}
+
+class BMW{
+    String model
+    autoPark()
+}
+
+class BYD{
+    String model
+    electricMode():电动模式
+}
+
+class Driver{
+    Car car
+    void drive()
+}
+
+
+@enduml
+
+@enduml
