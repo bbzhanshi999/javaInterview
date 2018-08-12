@@ -1,6 +1,5 @@
 package com.designModel.facade;
 
-import sun.plugin2.gluegen.runtime.CPU;
 
 /**
  * Created by Administrator on 2017/3/28 0028.

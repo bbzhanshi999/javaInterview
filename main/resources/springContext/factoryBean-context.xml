@@ -6,6 +6,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-   <bean id="car"  class="com.spring.intro.factorybean.CarFactoryBean"></bean>
-
+    <bean id="car" class="com.spring.intro.factorybean.CarFactoryBean"></bean>
+    
 </beans>

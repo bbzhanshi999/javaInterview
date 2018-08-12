@@ -7,6 +7,7 @@ public class Apple extends Fruit {
 
     private String taste;
 
+
     public String getTaste() {
         return taste;
     }
